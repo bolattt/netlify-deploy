@@ -22,16 +22,28 @@ export default function Drinks() {
 
   return (
     <div className="drinks">
-      {drinks.map((drink, i) => (
-        <div key={i} className="card">
-          <img src={drink.strDrinkThumb} alt="" />
-          <div>
-            <h3>{drink.strDrink}</h3>
-            <p>Category: {drink.strCategory}</p>
-            <p>Instructions: {drink.strInstructions}</p>
+      {drinks.map((drink, i) => {
+        const keys = Object.keys(drink).filter((key) =>
+          key.includes("Ingredient")
+        );
+        const ingredients = keys.map((key) => drink[key]).filter((key) => key);
+        return (
+          <div key={i} className="card">
+            <img src={drink.strDrinkThumb} alt="" />
+            <div>
+              <h3>{drink.strDrink}</h3>
+              <p>Category: {drink.strCategory}</p>
+              <p>Instructions: {drink.strInstructions}</p>
+              <ul>
+                Ingredients:
+                {ingredients.map((ing, i) => (
+                  <li key={i}>{ing}</li>
+                ))}
+              </ul>
+            </div>
           </div>
-        </div>
-      ))}
+        );
+      })}
     </div>
   );
 }
