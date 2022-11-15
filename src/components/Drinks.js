@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { drinksData } from "../data/drinksData";
 
 const options = {
   method: "GET",
