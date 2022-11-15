@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 export default function Main() {
   const [apis, setApis] = useState([]);
@@ -9,6 +10,7 @@ export default function Main() {
   }, []);
   return (
     <div>
+      <Link to="/drinks">Drinks </Link>
       {apis
         .filter((api) => api.Auth === "apiKey")
         .map((api, i) => (
